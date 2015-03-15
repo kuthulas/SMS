@@ -1,0 +1,42 @@
+<% title = "SMS" %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title =%></title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+    </head>
+  <body>
+    <div id="menu-wrapper" style="text-align: center; padding: 15px;">    
+    <div style="display: inline-block;"><a id="menu-head">Seminar Management System</a></div>
+    </div>
+
+    <ul id="menu-menu">
+      <li><a href='/'><span>Home</span></a></li>
+
+      <% if admin_signed_in? or user_signed_in? %>
+      <li><a href=<%= events_path =%>><span>Events</span></a></li>
+      <% end %>
+      
+      <% if admin_signed_in? %>
+        <li><a href='/users'><span>Manage Users</span></a></li>
+        <li><a href='/'><span>Reports</span></a></li>
+        <li class="menu-last" ><%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link' %> </li>
+        <li class="menu-right" ><a>Logged in as: <%= current_admin.username %></a></li>
+      <% elsif user_signed_in? %>
+        <li class="menu-nobar" ><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %> </li>
+        <li class="menu-right" ><a>Logged in as: <%= current_user.username %></a></li>
+      <% else %>
+        <li class="menu-nobar" ><%= link_to "Staff Login", new_user_session_path, :class => 'navbar-link' %></li>
+        <li class="menu-last" ><%= link_to "Admin Login", new_admin_session_path, :class => 'navbar-link' %></li>
+      <% end %>
+
+      <li><a href='/'><span>Help</span></a></li>
+    </ul>
+
+    <div><%= alert=%></div>
+    <%= yield %>
+
+  </body>
+</html>
