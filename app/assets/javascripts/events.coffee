@@ -3,7 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-	$('#event_date').datepicker({format: 'mm-dd-yyyy'})
+	$('#event_date').datepicker({
+		dateFormat: "dd-mm-yy"
+	})
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
+

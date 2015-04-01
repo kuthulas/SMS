@@ -5,7 +5,19 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @filterrific = initialize_filterrific(
+      Event,
+      params[:filterrific],
+      :select_options => {
+        sorted_by: Event.options_for_sorted_by
+      }
+    ) or return
+    @events = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /events/1

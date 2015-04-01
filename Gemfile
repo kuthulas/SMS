@@ -5,6 +5,8 @@ gem 'devise'
 gem 'cancan'
 gem 'simple_form'
 gem 'jquery-ui-rails'
+gem 'filterrific'
+gem 'will_paginate'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

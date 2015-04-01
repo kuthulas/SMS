@@ -1,46 +1,23 @@
-<h1>Pages#events</h1>
-<p>Find me in app/views/pages/events.html.erb</p>
-
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Events</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Year</th>
-      <th>Term</th>
-      <th>Date</th>
-      <th>Location</th>
-      <th>Time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
+  <%= form_for_filterrific @filterrific do |f| =%>
       <tr>
-        <td><%= event.name %></td>
-        <td><%= event.year %></td>
-        <td><%= event.term %></td>
-        <td><%= event.date %></td>
-        <td><%= event.location %></td>
-        <td><%= event.time %></td>
-        <td><%= link_to 'Show', event %></td>
-        <% if admin_signed_in? %>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-        <% if user_signed_in? %>
-        <td><%= link_to 'Check-in', event %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <td>
+          <%= f.text_field :search_query, :class => 'filterrific-periodically-observed form-control' =%>
+        </td>
+          <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
+                      {}, { :class => 'form-control' } =%>
+        </td>
+  <% end %>
 
-<br>
-<% if admin_signed_in? %>
-<%= link_to 'New Event', new_event_path %>
-<% end %>
+<div id="results">
+  <%= render :partial => 'events/list',
+           :locals => { :events => @events } =%>
+</div>
+
+  <p><%= will_paginate @events =%></p>
+
+  <br>
+  <% if admin_signed_in? %>
+  <%= link_to 'New Event', new_event_path %>
+  <% end %>
