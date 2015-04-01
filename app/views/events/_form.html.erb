@@ -5,7 +5,7 @@
     <%= f.input :name %>
     <%= f.input :year, :selected => [ "2015" ], collection: 2015..2020 %>
     <%= f.input :term,:selected => [ "Spring" ], collection: ["Spring", "Summer", "Fall", "Winter"] %>
-    <%= f.input :date, :selected => [ "1" ], collection: 1..31 %>
+    <%= f.input :date, as: :date_picker %>
     <%= f.input :location %>
     <%= f.input :time %>
   </div>
