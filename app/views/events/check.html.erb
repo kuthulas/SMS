@@ -40,14 +40,11 @@
 <table>
     <thead>
       <tr>
-        <th>Event</th>
-        <th>Location</th>
-        <th>Date</th>
-        <th>Time</th>
         <th>Student First Name</th>
         <th>Student Last Name</th>
         <th>Student Email</th>
         <th>Student UIN</th>
+        <th>Check-in Time</th>
         <th colspan = 2>Manage</th>
       </tr>
     </thead>
@@ -55,14 +52,11 @@
     <tbody>
       <% @checkins.each do |checkin| %>
         <tr>
-          <td><%= checkin.event.name %></td>
-          <td><%= checkin.event.location %></td>
-          <td><%= checkin.event.date %></td>
-          <td><%= checkin.event.time %></td>
           <td><%= checkin.student.fname %></td>
           <td><%= checkin.student.lname %></td>
           <td><%= checkin.student.email %></td>
           <td><%= checkin.student.uin %></td>
+          <td><%= l checkin.created_at, format: "%I:%m %p"%></td>
           <% if user_signed_in? %>
           <td><%= link_to 'Edit', edit_checkin_path(checkin) %></td>
           <td><%= link_to 'Destroy', checkin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
