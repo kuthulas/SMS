@@ -2,6 +2,11 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
+  def check
+     @checkins = Event.all
+     #@checkins = Checkin.where(event_id: @event.id)
+  end
+
   # GET /events
   # GET /events.json
   def index

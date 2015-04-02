@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => 'users/registrations'}
   
-  resources :events
+  resources :events do
+    member do
+      get :check
+    end
+  end
+
   resources :users, :except => ['new', 'create', 'update', 'destroy']
 
   get 'pages/home'

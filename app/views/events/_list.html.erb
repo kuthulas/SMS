@@ -30,7 +30,7 @@
           <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
           <% if user_signed_in? %>
-          <td><%= link_to 'Check-in', event %></td>
+          <td><%= link_to 'Check-in', check_event_path(event) %></td>
           <% end %>
         </tr>
       <% end %>
