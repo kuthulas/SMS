@@ -3,8 +3,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def check
-     @checkins = Event.all
-     #@checkins = Checkin.where(event_id: @event.id)
+     @checkins = Checkin.where(event_id: @event.id)
   end
 
   # GET /events
