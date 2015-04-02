@@ -1,5 +1,4 @@
-<h1>Listing Events</h1>
-
+<h2>Listing Events</h2>
   <%= form_for_filterrific @filterrific do |f| =%>
       <tr>
         <td>
@@ -10,6 +9,7 @@
         </td>
   <% end %>
 
+<br>
 <div id="results">
   <%= render :partial => 'events/list',
            :locals => { :events => @events } =%>
