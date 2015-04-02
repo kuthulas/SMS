@@ -3,9 +3,27 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
+	$("#card").focus()
+
 	$('#event_date').datepicker({
 		dateFormat: "dd-mm-yy"
 	})
+
+$(document).ready ->
+  oldVal = undefined
+
+  checkLength = (val) ->
+    if val.length >= 20
+      alert 'Submit!'
+    return
+
+  $('#card').bind 'DOMAttrModified textInput input change keypress paste focus', ->
+    val = @value
+    if val != oldVal
+      oldVal = val
+      checkLength val
+    return
+  return
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

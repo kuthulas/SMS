@@ -68,27 +68,3 @@
   </table>
 
 <%= link_to 'Back', events_path %>
-
-<% content_for :head do %>
-  <script type="text/javascript">
-  $(function() {
-    var oldVal;
-
-    $("#card").focus();
-
-    var checkLength = function (val) {
-      if (val.length >= 20) {
-        alert('Submit!');
-      }
-    }
-
-    $('#card').bind('DOMAttrModified textInput input change keypress paste focus', function () {
-      var val = this.value;
-      if (val !== oldVal) {
-        oldVal = val;
-        checkLength(val);
-      }
-    });
-  });
-  </script>
-<% end %>
