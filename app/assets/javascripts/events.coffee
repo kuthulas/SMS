@@ -3,13 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-	$("#card").focus()
+  $('#card').focus()
+  $('#event_date').datepicker dateFormat: 'dd-mm-yy'
 
-	$('#event_date').datepicker({
-		dateFormat: "dd-mm-yy"
-	})
-
-$(document).ready ->
   oldVal = undefined
 
   checkLength = (val) ->
