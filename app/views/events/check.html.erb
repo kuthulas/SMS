@@ -29,21 +29,12 @@
   </tr>
 </table>
 
-<br></br>
+<br> </br>
 
-<%= simple_form_for(@event) do |f| %>
-  <%= f.error_notification %>
+<div class="form-inputs">
+    Swipe: <input type="text" id="card">
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :year, :selected => [ "2015" ], collection: 2015..2020 %>
-    <%= f.input :term,:selected => [ "Spring" ], collection: ["Spring", "Summer", "Fall", "Winter"] %>
-    <%= f.input :date, as: :date_picker %>
-    <%= f.input :location %>
-    <%= f.input :time %>
-  </div>
-<% end %>
-
+<br> </br>
 <table>
     <thead>
       <tr>
@@ -83,13 +74,15 @@
   $(function() {
     var oldVal;
 
+    $("#card").focus();
+
     var checkLength = function (val) {
       if (val.length >= 20) {
         alert('Submit!');
       }
     }
 
-    $('#event_name').bind('DOMAttrModified textInput input change keypress paste focus', function () {
+    $('#card').bind('DOMAttrModified textInput input change keypress paste focus', function () {
       var val = this.value;
       if (val !== oldVal) {
         oldVal = val;
