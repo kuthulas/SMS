@@ -1,4 +1,8 @@
 class Event < ActiveRecord::Base
+  has_many :checkins
+  has_many :students, through: :checkins
+  has_many :users, through: :checkins
+
 	filterrific :default_filter_params => { :sorted_by => 'date_asc' },
               :available_filters => %w[
                 sorted_by

@@ -4,8 +4,15 @@
         <td>
           <%= f.text_field :search_query, :class => 'filterrific-periodically-observed form-control' =%>
         </td>
+        <td>
           <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
                       {}, { :class => 'form-control' } =%>
+        </td>
+        <td>
+          <%= link_to "Reset filters", reset_filterrific_url =%>
+        </td>
+        <td>
+          <%= render_filterrific_spinner =%>
         </td>
   <% end %>
 
@@ -14,9 +21,7 @@
   <%= render :partial => 'events/list',
            :locals => { :events => @events } =%>
 </div>
-
   <p><%= will_paginate @events =%></p>
-
   <br>
   <% if admin_signed_in? %>
   <%= link_to 'New Event', new_event_path %>

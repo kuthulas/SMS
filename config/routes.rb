@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :students
+
+  resources :checkins
+
   devise_for :users, :controllers => {:registrations => 'users/registrations'}
   
   resources :events
