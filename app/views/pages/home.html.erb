@@ -3,3 +3,33 @@
 <% else %>
 	<h3 style="text-align: center">Welcome!</h3>
 <% end %>
+
+  <%if !@events.empty? %>
+  <h3 style="text-align: center">Upcoming Events</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Term</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+   <% else %>
+   <h3 style="text-align: center">No Upcoming Events</h3>
+   <% end %>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= event.year %></td>
+          <td><%= event.term %></td>
+          <td><%= l event.date, format: :short %></td>
+          <td><%= event.location %></td>
+          <td><%= event.time %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

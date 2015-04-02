@@ -21,7 +21,7 @@
           <td><%= event.name %></td>
           <td><%= event.year %></td>
           <td><%= event.term %></td>
-          <td><%= event.date %></td>
+          <td><%= l event.date, format: :short %></td>
           <td><%= event.location %></td>
           <td><%= event.time %></td>
           <td><%= link_to 'Show', event %></td>
