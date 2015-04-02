@@ -7,7 +7,7 @@ gem 'simple_form'
 gem 'jquery-ui-rails'
 gem 'filterrific'
 gem 'will_paginate'
-
+gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
