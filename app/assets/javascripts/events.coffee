@@ -5,7 +5,7 @@
 ready = ->
   $('#card').focus()
   $('#event_date').datepicker dateFormat: 'dd-mm-yy'
-  $('#event_time').timepicker()
+  $('#event_time').timepicker timeFormat: 'h:i A'
 
   oldVal = undefined
 
