@@ -6,6 +6,12 @@ class EventsController < ApplicationController
      @checkins = Checkin.where(event_id: @event.id)
   end
 
+  def checkin
+    render html: '<b>html goes here<b/>'.html_safe
+    #search
+    #create
+    #save
+  end
   # GET /events
   # GET /events.json
   def index
