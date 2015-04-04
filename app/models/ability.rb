@@ -9,5 +9,6 @@ class Ability
     	can :read, :all if user.is_a?(User)
     	can :check, :all if user.is_a?(User)
     	can :checkin, :all if user.is_a?(User)
+    	can :manage, Checkin if user.is_a?(User)
     end
 end

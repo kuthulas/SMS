@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users, :except => ['new', 'create', 'update', 'destroy']
 
   get 'pages/home'
+  get 'pages/help'
 
   devise_for :admins
   # The priority is based upon order of creation: first created -> highest priority.
