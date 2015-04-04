@@ -7,12 +7,14 @@ class EventsController < ApplicationController
   end
 
   def checkin
-    #search
+    #duplicate
     @checkstudent = Student.where(:card => params["card"]).first
-    #create
-    @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
-    #save
-    @cin.save
+    if Checkin.exists?(:event_id => @event.id, :student_id => @checkstudent.id)
+      flash.now[:notice] = 'Student already checked in for this event!'
+    else
+      @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
+      @cin.save
+    end
     @checkins = Checkin.where(event_id: @event.id)
     respond_to do |format|
       format.js
