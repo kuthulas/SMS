@@ -1,6 +1,6 @@
 class CheckinsController < ApplicationController
   before_action :set_checkin, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   # GET /checkins
   # GET /checkins.json
   def index
