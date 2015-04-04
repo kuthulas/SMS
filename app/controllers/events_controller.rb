@@ -7,14 +7,20 @@ class EventsController < ApplicationController
   end
 
   def checkin
-    #duplicate
-    @checkstudent = Student.where(:card => params["card"]).first
-    if Checkin.exists?(:event_id => @event.id, :student_id => @checkstudent.id)
-      flash.now[:notice] = 'Student already checked in for this event!'
+    if Student.exists?(:card => params["card"])
+      @checkstudent = Student.where(:card => params["card"]).first
+      if Checkin.exists?(:event_id => @event.id, :student_id => @checkstudent.id)
+        flash.now[:notice] = 'Student already checked in for this event!'
+      else
+        @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
+        @cin.save
+      end
     else
-      @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
-      @cin.save
+      flash.now[:notice] = 'Card number not found!'
+      # render form for checkin and student?
+      # merge student if duplicate?
     end
+
     @checkins = Checkin.where(event_id: @event.id)
     respond_to do |format|
       format.js
