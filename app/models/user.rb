@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   has_many :checkins
   has_many :events, through: :checkins
   has_many :students, through: :checkins
+
+  self.per_page = 10
 end

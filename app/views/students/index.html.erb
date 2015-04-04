@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Students</h1>
-
+<%= page_entries_info @students, :model => 'student' =%>. <%= link_to 'New Student', new_student_path %>
+<br></br>
 <table>
   <thead>
     <tr>
@@ -29,7 +30,6 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Student', new_student_path %>
+<p><%= will_paginate @students =%></p>
+<br>
