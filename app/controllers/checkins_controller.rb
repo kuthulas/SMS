@@ -1,10 +1,27 @@
 class CheckinsController < ApplicationController
   before_action :set_checkin, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  load_and_authorize_resource
+
   # GET /checkins
   # GET /checkins.json
+
   def index
-    @checkins = Checkin.all
+    @filterrific = initialize_filterrific(
+      Checkin,
+      params[:filterrific],
+      :select_options => {
+        sorted_by: Checkin.options_for_sorted_by
+      }
+    ) or return
+    @checkins = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+      format.csv { 
+        @checkins = @checkins.paginate(:page => params[:page], :per_page => @checkins.count)
+        render text: @checkins.to_csv }
+    end
   end
 
   # GET /checkins/1

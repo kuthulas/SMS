@@ -27,6 +27,9 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      format.csv { 
+        @events = @events.paginate(:page => params[:page], :per_page => @events.count)
+        render text: @events.to_csv }
     end
   end
 

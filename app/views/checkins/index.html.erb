@@ -1,36 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Checkins</h1>
-
-<table>
-    <thead>
+<h2>Listing Checkins</h2>
+  <%= form_for_filterrific @filterrific do |f| =%>
       <tr>
-        <th>Student First Name</th>
-        <th>Student Last Name</th>
-        <th>Student Email</th>
-        <th>Student UIN</th>
-        <th>Check-in Time</th>
-        <th colspan = 2>Manage</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @checkins.each do |checkin| %>
-        <tr>
-          <td><%= checkin.student.fname %></td>
-          <td><%= checkin.student.lname %></td>
-          <td><%= checkin.student.email %></td>
-          <td><%= checkin.student.uin %></td>
-          <td><%= l checkin.created_at, format: "%I:%m %p"%></td>
-          <% if user_signed_in? %>
-          <td><%= link_to 'Edit', edit_checkin_path(checkin) %></td>
-          <td><%= link_to 'Destroy', checkin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+        <td>
+          <%= f.text_field :search_query, :class => 'filterrific-periodically-observed form-control' =%>
+        </td>
+        <td>
+          <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
+                      {}, { :class => 'form-control' } =%>
+        </td>
+        <td>
+          <%= link_to "Reset filters", reset_filterrific_url =%>
+        </td>
+        <td>
+          <%= link_to "Download", "/checkins.csv", :format => 'csv' %>
+        </td>
+  <% end %>
+<%= render_filterrific_spinner =%>
 <br>
-
-<%= link_to 'New Checkin', new_checkin_path %>
+<div id="results">
+  <%= render :partial => 'checkins/list',
+           :locals => { :checkins => @checkins } =%>
+</div>
+  <p><%= will_paginate @checkins =%></p>
+  <br>
+  <% if admin_signed_in? %>
+  <%= link_to 'New Checkin', new_checkin_path %>
+  <% end %>
