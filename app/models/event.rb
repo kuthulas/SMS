@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
                 sorted_by
                 search_query
               ]
-	self.per_page = 5
+	self.per_page = 10
 
 	scope :search_query, lambda { |query|
     return nil  if query.blank?

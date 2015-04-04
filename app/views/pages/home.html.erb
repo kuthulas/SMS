@@ -5,6 +5,7 @@
 <% end %>
 
   <%if !@events.empty? %>
+  <%= page_entries_info @events, :model => 'event' =%>
   <h3 style="text-align: center">Upcoming Events</h3>
   <table>
     <thead>
@@ -43,3 +44,4 @@
       <% end %>
     </tbody>
   </table>
+  <p><%= will_paginate @events =%></p>
