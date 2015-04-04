@@ -4,6 +4,11 @@
     :locals => { :checkins => @checkins }
   )
 ) %>
+
+<% if @render_student %>
+	$("#fill_student").html("<%= j render(:partial => 'events/studentform', :locals => { :card => @card }) %>");
+<% end %>
+
 $("#check_list").html("<%= js %>");
 $("#card").val("")
 $('#card').focus()

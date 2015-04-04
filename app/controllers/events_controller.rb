@@ -17,15 +17,31 @@ class EventsController < ApplicationController
       end
     else
       flash.now[:notice] = 'Card number not found!'
-      # render form for checkin and student?
+      # render form for student?
+      @render_student = true
+      @card = params["card"]
       # merge student if duplicate?
     end
 
     @checkins = Checkin.where(event_id: @event.id)
     respond_to do |format|
       format.js
-   end
+    end
   end
+
+  def checkback
+    @stu = Student.create(:fname => params["fname"], :lname => params["lname"], :uin => params["uin"], :email => params["email"], :card => params["card"])
+    @stu.save
+    @chin = Checkin.create(:event_id => @event.id, :student_id => @stu.id, :user_id => current_user.id)
+    if @chin.save
+      flash.now[:notice] = 'Student record created and checked in!'
+    end
+    @checkins = Checkin.where(event_id: @event.id)
+    respond_to do |format|
+        format.js
+    end
+  end
+
   # GET /events
   # GET /events.json
   def index

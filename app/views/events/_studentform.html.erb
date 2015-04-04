@@ -1,0 +1,8 @@
+<%= form_tag "/events/#{@event.id}/checkback.js", :id => 'checkback', remote: true do %>
+  UIN: <%= text_field_tag "uin" %>
+  Fname: <%= text_field_tag "fname" %>
+  Lname: <%= text_field_tag "lname" %>
+  Card: <%= text_field_tag "card", @card %>
+  Email: <%= text_field_tag "email" %>
+         <%= submit_tag 'Checkin' %>
+<% end %>

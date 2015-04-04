@@ -1,0 +1,12 @@
+$("#checkback").remove()
+
+<% jsw = escape_javascript(
+  render(
+    :partial => 'events/checklist',
+    :locals => { :checkins => @checkins }
+  )
+) %>
+
+$("#check_list").html("<%= jsw %>");
+$("#card").val("")
+$('#card').focus()

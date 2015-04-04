@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       get :check
       post :checkin
+      post :checkback
     end
   end
 

@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
-	has_many :checkins
+	has_many :checkins, :dependent => :destroy
 	has_many :events, through: :checkins
 	has_many :users, through: :checkins
 
