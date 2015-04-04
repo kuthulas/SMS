@@ -33,8 +33,8 @@
 <br> </br>
 
 <%= form_tag "/events/#{@event.id}/checkin", :id => 'swipe', remote: true do %>
-  <%= text_field_tag "card" %>
-  <%= check_box_tag "fast" %> <a>Fast</a>
+  <h5>Swipe: <%= text_field_tag "card" %> 
+  <%= check_box_tag "fast", 'yes', true %> <a>Fast</a> </h5>
 <% end %>
 
 <br> </br>

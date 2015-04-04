@@ -14,6 +14,14 @@ ready = ->
       $('#swipe').submit()
     return
 
+  $('#card').bind 'DOMAttrModified textInput input change keypress paste focus', ->
+    val = @value
+    if val != oldVal
+      oldVal = val
+      checkLength val
+    return
+  return
+
   $('#fast').click ->
     if @checked
       $('#card').bind 'DOMAttrModified textInput input change keypress paste focus', ->
