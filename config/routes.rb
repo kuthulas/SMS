@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :events do
     member do
       get :check
-      get :checkin
+      post :checkin
     end
   end
 

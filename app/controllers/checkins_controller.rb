@@ -73,7 +73,7 @@ class CheckinsController < ApplicationController
   def destroy
     @checkin.destroy
     respond_to do |format|
-      format.html { redirect_to checkins_url, notice: 'Checkin was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Checkin was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

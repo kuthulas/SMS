@@ -10,8 +10,8 @@ ready = ->
   oldVal = undefined
 
   checkLength = (val) ->
-    if val.length >= 20
-      alert 'Submit!'
+    if val.length >= 13
+      $('#swipe').submit()
     return
 
   $('#card').bind 'DOMAttrModified textInput input change keypress paste focus', ->

@@ -7,10 +7,16 @@ class EventsController < ApplicationController
   end
 
   def checkin
-    render html: '<b>html goes here<b/>'.html_safe
     #search
+    @checkstudent = Student.where(:card => params["card"]).first
     #create
+    @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
     #save
+    @cin.save
+    @checkins = Checkin.where(event_id: @event.id)
+    respond_to do |format|
+      format.js
+   end
   end
   # GET /events
   # GET /events.json
