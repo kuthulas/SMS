@@ -8,14 +8,14 @@ $concrete: #f2f2f2;
 input[type='text'] {
 	position: relative;
 	width: auto;
-	height: 25px;
+	height: 15px;
 	padding: 0;
 	font-size: 14px;
 	color: $maroon;
 	text-align: center;
 	background: $concrete;
 	border: 0;
-	border: 2px dashed $maroon;
+	border: 2px solid $maroon;
 	border-radius: 2px;
 	&:focus {
 		outline: none;
