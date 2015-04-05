@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 ruby "2.2.1"
+
 gem 'devise'
 gem 'cancan'
 gem 'simple_form'
@@ -9,11 +10,11 @@ gem 'filterrific'
 gem 'will_paginate'
 gem 'rails_12factor', group: :production
 gem 'faker'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use sqlite3 as the database for Active Record
+# Use postgresql as the database for Active Record
 gem 'pg'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

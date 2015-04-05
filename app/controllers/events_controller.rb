@@ -17,10 +17,8 @@ class EventsController < ApplicationController
       end
     else
       flash.now[:notice] = 'Card number not found!'
-      # render form for student?
       @render_student = true
       @card = params["card"]
-      # merge student if duplicate?
     end
 
     @checkins = Checkin.where(event_id: @event.id)

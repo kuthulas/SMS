@@ -19,5 +19,8 @@ include Faker
 	Event.create(name: Lorem.word, year:'2015', term: @terms.sample , date: I18n.localize(Faker::Date.between(2.days.ago, 150.days.since)), location:Address.state_abbr, time:I18n.localize(Faker::Time.between(2.days.ago, Time.now), format: "%I:%m %p"))	
 	@fname = Name.first_name
 	Student.create(fname:@fname, lname: Name.last_name, uin:Number.number(9), email:[@fname.downcase, "@tamu.edu"].join(""), card:Code.ean)
+end
+
+50.times do |variable|
 	Checkin.create(event_id: rand(1..50), student_id: rand(1..50), user_id: rand(1..1))
 end
