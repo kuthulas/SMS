@@ -47,14 +47,14 @@ direction: rtl;
 #swipe input[type='text']{
   position: relative;
   width: auto;
-  height: 25px;
+  height: 20px;
   padding: 0;
   font-size: 14px;
   color: #800000;
   text-align: center;
   background: #f2f2f2;
   border: 0;
-  border: 2px dashed #800000;
+  border: 1px dashed #800000;
   border-radius: 2px;
 }
 
