@@ -2,10 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-  	<%= f.input :event_id %>
-    <%= f.input :student_id %>
-    <%= f.input :user_id %>
-    <%= f.input :created_at %>
+  	<%= f.input :event_id, label: false, placeholder: 'Event ID' %>
+    <%= f.input :student_id, label: false, placeholder: 'Student ID' %>
+    <%= f.input :user_id, label: false, placeholder: 'Staff ID' %>
+    <%= f.input :created_at, label: false, placeholder: 'Created At' %>
   </div>
 
   <div class="form-actions">

@@ -12,7 +12,7 @@
   margin: 2px 10px;
 }
 
-.simple_form input[type='text'], input[type='password']{
+.simple_form input{
   position: relative;
   vertical-align: top;
   width: 100%;
@@ -24,11 +24,16 @@
   background: #f2f2f2;
   border: 0;
   border: 2px dashed #800000;
+  border-radius: 2px;
 }
 
-.simple_form input[type='text']:focus, input[type='password']:focus{
+.simple_form input[type='checkbox']{
+  width:auto;
+}
+.simple_form input:focus{
   outline: none
 }
+
 div.boolean {
   position: relative;
   width: 100%;
@@ -41,8 +46,8 @@ div.boolean {
 .simple_form input[type='submit'] {
   position: relative;
   vertical-align: top;
-  width: 100%;
-  height: 25px;
+  width: 50%;
+  height: 30px;
   padding: 0;
   font-size: 14px;
   color: #f2f2f2;
@@ -50,6 +55,7 @@ div.boolean {
   background: #800000;
   border: 0;
   border: 2px solid #800000;
+  border-radius: 2px;
   cursor: pointer;
 }
 
@@ -73,6 +79,15 @@ label.collection_radio_buttons {
   color: black;
   display: block;
   margin-left: 120px;
+}
+
+.simple_form .select {
+ width: 100%;
+ background-color: #f2f2f2;
+ border-radius: 2px;
+ font-size: 14px;
+ color: #800000;
+ cursor: pointer;
 }
 
 .simple_form .hint {

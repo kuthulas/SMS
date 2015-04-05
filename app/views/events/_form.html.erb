@@ -2,12 +2,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :year, :selected => [ "2015" ], collection: 2015..2020 %>
-    <%= f.input :term,:selected => [ "Spring" ], collection: ["Spring", "Summer", "Fall", "Winter"] %>
-    <%= f.input :date, as: :date_picker %>
-    <%= f.input :location %>
-    <%= f.input :time, as: :time_picker %>
+    <%= f.input :name, label: false, placeholder: 'Name' %>
+    <%= f.input :year, :selected => [ "2015" ], collection: 2015..2020, label: false %>
+    <%= f.input :term,:selected => [ "Spring" ], collection: ["Spring", "Summer", "Fall", "Winter"], label: false %>
+    <%= f.input :date, as: :date_picker, label: false, placeholder: 'Date' %>
+    <%= f.input :location, label: false, placeholder: 'Location' %>
+    <%= f.input :time, as: :time_picker, label: false, placeholder: 'Time' %>
   </div>
 
   <div class="form-actions">
