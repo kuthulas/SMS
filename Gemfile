@@ -11,6 +11,13 @@ gem 'will_paginate'
 gem 'rails_12factor', group: :production
 gem 'faker'
 
+group :development, :test do
+  gem "rspec-rails"
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  #gem 'factory_girl_rails'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
