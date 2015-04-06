@@ -12,4 +12,13 @@ class UsersController < ApplicationController
 	def edit
 		@user = User.find(params[:id])
 	end
+
+	def destroy
+		@user = User.find(params[:id])
+	    @user.destroy
+	    respond_to do |format|
+	      format.html { redirect_to :back, notice: 'User was successfully destroyed.' }
+	      format.json { head :no_content }
+	    end
+	  end
 end

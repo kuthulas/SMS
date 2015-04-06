@@ -1,4 +1,4 @@
-<% title = "SMS" %>
+<% title = "Seminar Management System" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,9 +24,6 @@
         <li><a href=<%= students_path  =%>><span>Students</span></a></li>
       <% end %>
       
-      <% if admin_signed_in? or user_signed_in? %>
-        <li><a href=<%= checkins_path =%>><span>Check-ins</span></a></li>
-      <% end %>
       <% if admin_signed_in? %>
         <li><a href='/users'><span>Manage Users</span></a></li>
         <li><a href='/checkins'><span>Reports</span></a></li>

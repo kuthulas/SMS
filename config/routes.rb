@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, :except => ['new', 'create', 'update', 'destroy']
+  resources :users, :except => ['new', 'create', 'update']
 
   get 'pages/home'
   get 'pages/help'
