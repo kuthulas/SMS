@@ -16,3 +16,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+#ignore .swp files
+*.swp
+*~

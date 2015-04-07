@@ -68,6 +68,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    puts "******REACHED*******"
     @event = Event.new
   end
 
