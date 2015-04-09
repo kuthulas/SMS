@@ -16,6 +16,11 @@ Rails.application.routes.draw do
 
   resources :users, :except => ['new', 'create', 'update']
 
+  resources :students do
+    collection { post :import }
+  end
+  #root to: 'students#index'
+
   get 'pages/home'
   get 'pages/help'
 

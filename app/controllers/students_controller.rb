@@ -36,7 +36,11 @@ class StudentsController < ApplicationController
       end
     end
   end
-
+  
+  def import
+    Student.import(params[:file])
+    redirect_to root_url, notice: "Students imported."
+  end
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
