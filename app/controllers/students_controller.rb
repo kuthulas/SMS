@@ -38,8 +38,12 @@ class StudentsController < ApplicationController
   end
   
   def import
-    Student.import(params[:file])
-    redirect_to root_url, notice: "Students imported."
+    begin
+       Student.import(params[:file])
+       redirect_to students_url, notice: "Students imported."
+    rescue ActiveRecord::UnknownAttributeError 
+       redirect_to students_url, notice: "Error in imported file!"
+    end
   end
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json

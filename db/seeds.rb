@@ -18,7 +18,7 @@ include Faker
 50.times do |variable|
 	Event.create(name: Lorem.word, year:'2015', term: @terms.sample , date: I18n.localize(Faker::Date.between(2.days.ago, 150.days.since)), location:Address.state_abbr, time:I18n.localize(Faker::Time.between(2.days.ago, Time.now), format: "%I:%M %p"))	
 	@fname = Name.first_name
-	Student.create(fname:@fname, lname: Name.last_name, uin:Number.number(9), email:[@fname.downcase, "@tamu.edu"].join(""), card:Code.ean)
+	Student.create(fname:@fname, lname: Name.last_name, uin:Number.number(9).to_s, email:[@fname.downcase, "@tamu.edu"].join(""), card:Code.ean)
 end
 
 50.times do |variable|
