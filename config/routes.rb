@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'cardcontroller/index'
+
+  post 'cardcontroller/import'
+
   resources :students
 
   resources :checkins
