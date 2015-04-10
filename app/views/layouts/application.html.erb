@@ -22,6 +22,7 @@
       <% if admin_signed_in? or user_signed_in? %>
         <li><a href=<%= events_path =%>><span>Events</span></a></li>
         <li><a href=<%= students_path  =%>><span>Students</span></a></li>
+        <li><a href='/cardcontroller/index'><span>Cards</span></a></li>
       <% end %>
       
       <% if admin_signed_in? %>

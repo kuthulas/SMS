@@ -1,7 +1,6 @@
 class CardcontrollerController < ApplicationController
   def index
     @cards = Card.all.paginate(:page => params[:page])
-    puts Student.find_by(uin:  @cards.first.uin).fname
   end
 
   def import
