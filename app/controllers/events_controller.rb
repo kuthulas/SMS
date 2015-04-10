@@ -7,18 +7,24 @@ class EventsController < ApplicationController
   end
 
   def checkin
-    if Student.exists?(:card => params["card"])
-      @checkstudent = Student.where(:card => params["card"]).first
-      if Checkin.exists?(:event_id => @event.id, :student_id => @checkstudent.id)
-        flash.now[:notice] = 'Student already checked in for this event!'
+    if Card.exists?(:number => params["card"])
+    #if Student.exists?(:card => params["card"])
+      @checkstudent = Student.where(:uin => Card.find_by(number: params["card"]).uin).first
+      #@checkstudent = Student.where(:card => params["card"]).first
+      if(@checkstudent)
+        if Checkin.exists?(:event_id => @event.id, :student_id => @checkstudent.id)
+          flash.now[:notice] = 'Student already checked in for this event!'
+        else
+          @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
+          @cin.save
+        end
       else
-        @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
-        @cin.save
+	  flash.now[:notice] = 'Card number found but student not found!'
+	  @render_student = true
+	  @card = params["card"]
       end
     else
       flash.now[:notice] = 'Card number not found!'
-      @render_student = true
-      @card = params["card"]
     end
 
     @checkins = Checkin.where(event_id: @event.id)
