@@ -4,10 +4,10 @@
       <tr>
         <th>Student First Name</th>
         <th>Student Last Name</th>
-        <th>Student Email</th>
-        <th>Student UIN</th>
+        <!--<th>Student Email</th>
+        <th>Student UIN</th>-->
         <th>Check-in Time</th>
-        <th colspan = 2>Manage</th>
+        <!--<th colspan = 2>Manage</th>-->
       </tr>
     </thead>
 
@@ -16,13 +16,13 @@
         <tr>
           <td><%= checkin.student.fname %></td>
           <td><%= checkin.student.lname %></td>
-          <td><%= checkin.student.email %></td>
-          <td><%= checkin.student.uin %></td>
+         <!-- <td><%= checkin.student.email %></td>
+          <td><%= checkin.student.uin %></td>-->
           <td><%= l checkin.created_at, format: "%I:%M %p" %></td>
-          <% if user_signed_in? %>
+         <!-- <% if user_signed_in? %>
           <td><%= link_to 'Edit', edit_checkin_path(checkin) %></td>
           <td><%= link_to 'Destroy', checkin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
+          <% end %>-->
         </tr>
       <% end %>
     </tbody>

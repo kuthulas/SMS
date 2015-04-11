@@ -25,6 +25,8 @@ class EventsController < ApplicationController
       end
     else
       flash.now[:notice] = 'Card number not found!'
+      @render_student = true
+      @card = params["card"]
     end
 
     @checkins = Checkin.where(event_id: @event.id)
@@ -34,12 +36,17 @@ class EventsController < ApplicationController
   end
 
   def checkback
-    @stu = Student.create(:fname => params["fname"], :lname => params["lname"], :uin => params["uin"], :email => params["email"], :card => params["card"])
-    @stu.save
-    @chin = Checkin.create(:event_id => @event.id, :student_id => @stu.id, :user_id => current_user.id)
-    if @chin.save
-      flash.now[:notice] = 'Student record created and checked in!'
-    end
+    if Student.exists?(:uin => params["uin"])
+      @stu = Card.create(:number => params["card"],:uin => params["uin"])
+      @stu.save
+      @chin = Checkin.create(:event_id => @event.id, :student_id => @stu.id, :user_id => current_user.id)
+      if @chin.save
+        flash.now[:notice] = 'Student record created and checked in!'
+      end
+    else
+      flash.now[:notice] = 'Student data not found! Check in Failed, Please contact Admin'
+    end  
+
     @checkins = Checkin.where(event_id: @event.id)
     respond_to do |format|
         format.js
