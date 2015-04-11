@@ -9,7 +9,8 @@ class EventsController < ApplicationController
   def checkin
     if Card.exists?(:number => params["card"])
     #if Student.exists?(:card => params["card"])
-      @checkstudent = Student.where(:uin => Card.find_by(number: params["card"]).uin).first
+      @checkstudent = Student.find_by(uin: Card.uin.find_by(number: params["card"]))
+      print "***************", @checkstudent
       #@checkstudent = Student.where(:card => params["card"]).first
       if(@checkstudent)
         if Checkin.exists?(:event_id => @event.id, :student_id => @checkstudent.id)
@@ -37,14 +38,16 @@ class EventsController < ApplicationController
 
   def checkback
     if Student.exists?(:uin => params["uin"])
-      @stu = Card.create(:number => params["card"],:uin => params["uin"])
-      @stu.save
-      @chin = Checkin.create(:event_id => @event.id, :student_id => @stu.id, :user_id => current_user.id)
+      
+      @cardstu = Card.create(:number => params["card"],:uin => params["uin"])
+      @cardstu.save
+      
+      @chin = Checkin.create(:event_id => @event.id, :student_id => Student.find_by(uin: @cardstu.uin).id, :user_id => current_user.id)
       if @chin.save
         flash.now[:notice] = 'Student record created and checked in!'
       end
     else
-      flash.now[:notice] = 'Student data not found! Check in Failed, Please contact Admin'
+      flash.now[:notice] = 'UIN not found! Check in Failed, Try again or Contact Admin'
     end  
 
     @checkins = Checkin.where(event_id: @event.id)

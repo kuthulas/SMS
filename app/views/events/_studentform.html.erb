@@ -1,9 +1,9 @@
 <%= form_tag "/events/#{@event.id}/checkback.js", :id => 'checkback', remote: true do %>
   <%= text_field_tag "uin", nil, :label => false, :placeholder => 'UIN' %>
-  <%= text_field_tag "fname", nil, :label => false, :placeholder => 'First Name' %>
-  <%= text_field_tag "lname", nil, :label => false, :placeholder => 'Last Name' %>
+  <!--<%= text_field_tag "fname", @fname, :label => false, :placeholder => 'First Name' %>
+  <%= text_field_tag "lname", @lname, :label => false, :placeholder => 'Last Name' %>-->
   <%= text_field_tag "card", @card, :label => false, :placeholder => 'Card Number' %>
-  <%= text_field_tag "email", nil, :label => false, :placeholder => 'Email' %>
+  <!--<%= text_field_tag "email", nil, :label => false, :placeholder => 'Email' %>-->
   <br></br>
          <%= submit_tag 'Checkin' %>
 <% end %>
