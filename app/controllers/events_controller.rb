@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   def checkin
     if Card.exists?(:number => params["card"])
     #if Student.exists?(:card => params["card"])
-      @checkstudent = Student.find_by(uin: Card.uin.find_by(number: params["card"]))
+      @checkstudent = Student.find_by(uin: Card.find_by(number: params["card"]).uin)
       print "***************", @checkstudent
       #@checkstudent = Student.where(:card => params["card"]).first
       if(@checkstudent)

@@ -4,6 +4,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
+    print "What the hell!"
     @students = Student.all.paginate(:page => params[:page])
   end
 
