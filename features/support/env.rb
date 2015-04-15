@@ -4,6 +4,12 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
+require 'simplecov'
+SimpleCov.start do
+  add_filter "/spec/"
+  add_filter "/features/"
+  add_filter "/config/"
+end
 require 'cucumber/rails'
 
 # Capybara defaults to CSS3 selectors rather than XPath.

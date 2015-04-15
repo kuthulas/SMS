@@ -20,3 +20,6 @@
 #ignore .swp files
 *.swp
 *~
+
+#ignore code coverage data
+/coverage

@@ -12,6 +12,7 @@ gem 'rails_12factor', group: :production
 gem 'faker'
 gem 'factory_girl'
 gem 'factory_girl_rails'
+gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   gem "rspec-rails"

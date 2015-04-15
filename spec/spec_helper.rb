@@ -16,6 +16,12 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'simplecov'
+SimpleCov.start do
+  add_filter "/spec/"
+  add_filter "/features/"
+  add_filter "/config/"
+end
 require 'devise'
 require 'factory_girl'
 #$LOAD_PATH << '.'
