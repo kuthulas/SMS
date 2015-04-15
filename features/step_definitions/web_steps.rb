@@ -54,9 +54,9 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
-  print path_to(link)
+  
   visit path_to(link)
-  puts current_path
+ 
   #puts link
   #print link
   #click_link(link)
@@ -132,7 +132,7 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
     assert page.has_no_content?(text)
   end
 end
-
+ 
 Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
 
@@ -235,7 +235,6 @@ end
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
-    puts "DJ----", current_path, path_to(page_name)
     current_path.should == path_to(page_name)
   else
     assert_equal path_to(page_name), current_path

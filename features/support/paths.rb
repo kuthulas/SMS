@@ -49,7 +49,31 @@ module NavigationHelpers
        '/events/new'
     when /^the New Event page/
        '/events/new'
-    # Add more mappings here.
+    when /^Events/
+       '/events'
+    when /^Students/
+       '/students'
+    when /^New Student/
+       '/students/new'
+    when /^Check-in/
+       '/events/1/check'
+    when /^Import/
+       '/students/import'
+    when /^Cards/
+       '/cardcontroller/index'
+    when /^Manage Users/
+       '/users'
+    when /^New User/
+       '/users/sign_up'
+    when /^Reports/
+       '/checkins'
+    when /^Download/
+       '/checkins.csv'
+    when /^Browse.../
+       ''
+    when /^Logout/
+       '/admins/sign_out'
+  # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i

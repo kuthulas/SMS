@@ -7,6 +7,7 @@ Scenario: Admin Login
   When I fill in "username" with "admin"
   When I fill in "password" with "admin123" 
   And I press "Log in"
+
   Then I should be on the Admin home page
   When I follow "Admin Logout"
   
