@@ -10,6 +10,8 @@ gem 'filterrific'
 gem 'will_paginate'
 gem 'rails_12factor', group: :production
 gem 'faker'
+gem 'factory_girl'
+gem 'factory_girl_rails'
 
 group :development, :test do
   gem "rspec-rails"
