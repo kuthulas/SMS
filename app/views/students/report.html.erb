@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Reporting Student Checkin data</h3>
+<%= page_entries_info @students, :model => 'student' =%>.
+<br></br>
+<table>
+  <thead>
+    <tr>
+      <th>Uin</th>
+      <th>Fname</th>
+      <th>Lname</th>
+      <th>Email</th>
+      <th>Dept Event Count</th>
+      <th>Industrial Event Count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.uin %></td>
+        <td><%= student.fname %></td>
+        <td><%= student.lname %></td>
+        <td><%= student.email %></td>
+        <td><%= student.depteventnum %></td>
+        <td><%= student.indueventnum %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<p><%= will_paginate @students =%></p>
+<br>

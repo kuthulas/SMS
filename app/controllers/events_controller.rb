@@ -17,6 +17,12 @@ class EventsController < ApplicationController
           flash.now[:notice] = 'Student already checked in for this event!'
         else
           @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
+	  if(@event.isDeptEvent)
+		@checkstudent.depteventnum += 1
+	  else
+		@checkstudent.indueventnum += 1
+	  end
+	  @checkstudent.save
           @cin.save
         end
       else
@@ -84,7 +90,6 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    puts "******REACHED*******"
     @event = Event.new
   end
 
@@ -140,6 +145,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :year, :term, :date, :location, :time)
+      params.require(:event).permit(:name, :year, :term, :date, :location, :time, :eventtype, :typedetails)
     end
 end

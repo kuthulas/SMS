@@ -2,12 +2,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, label: false, placeholder: 'Name' %>
+    <%= f.input :name, placeholder: 'Name' %>
     <%= f.input :year, :selected => [ "2015" ], collection: 2015..2020, label: false %>
     <%= f.input :term,:selected => [ "Spring" ], collection: ["Spring", "Summer", "Fall", "Winter"], label: false %>
     <%= f.input :date, as: :date_picker, label: false, placeholder: 'Date' %>
     <%= f.input :location, label: false, placeholder: 'Location' %>
     <%= f.input :time, as: :time_picker, label: false, placeholder: 'Time' %>
+    <%= f.input :eventtype,:selected => [ "Dept" ], collection: ["Dept", "Industrial"], label: "Event Type" %>
+    <%= f.input :typedetails, label: "Dept/Industry Name", placeholder: 'Chemical Engg.' %>
   </div>
 
   <div class="form-actions">
