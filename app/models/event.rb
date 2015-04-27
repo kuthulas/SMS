@@ -72,4 +72,8 @@ class Event < ActiveRecord::Base
     end
   end
   end
+
+  def isDeptEvent
+    return eventtype == "Dept"
+  end
 end

@@ -45,6 +45,10 @@ class StudentsController < ApplicationController
        redirect_to students_url, notice: "Error in imported file!"
     end
   end
+
+  def report
+    @students = Student.all.paginate(:page => params[:page])
+  end
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update

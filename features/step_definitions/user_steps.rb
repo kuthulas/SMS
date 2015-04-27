@@ -305,3 +305,16 @@ Then(/^I should see the Cards page$/) do
   expect(page).to have_content "Import Card Data"
 end
 
+When(/^I follow Edit$/) do
+  visit '/students/1/edit'
+end
+
+When(/^I follow Show user$/) do
+  visit 'users/1'
+end
+
+When(/^I follow Edit user$/) do
+  visit 'users/1/edit'
+end
+
+

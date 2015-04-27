@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   post 'cardcontroller/import'
 
+  resources :students do
+    collection { post :import }
+    collection { get :report }
+  end
   resources :students
 
   resources :checkins
@@ -20,9 +24,6 @@ Rails.application.routes.draw do
 
   resources :users, :except => ['new', 'create', 'update']
 
-  resources :students do
-    collection { post :import }
-  end
   #root to: 'students#index'
 
   get 'pages/home'
