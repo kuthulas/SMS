@@ -24,6 +24,4 @@ Scenario: Create a Event
    Then I should see "Swipe:"
    When I check "fast"
    When I fill in "card" with "1234567890"
-   When I press Enter
-   Then show me the page
-
+ 

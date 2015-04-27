@@ -73,6 +73,18 @@ module NavigationHelpers
        ''
     when /^Logout/
        '/admins/sign_out'
+    when /^New Checkin/
+       '/checkins/new'
+    when /^Import/
+       '/cardcontroller/import'
+    when /^Edit/
+       '/events/1/edit'
+    when /^Destroy/
+       'events/1'
+    when /^Show/
+       'students/1'
+    
+    
   # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

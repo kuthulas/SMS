@@ -1,4 +1,4 @@
-Feature: Importing students as a admin
+Feature: Importing students as a admin, but should show an error as no file will be selected to import
 
 Scenario: Students bulk import
    Given I am logged in as admin
