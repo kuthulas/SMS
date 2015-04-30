@@ -24,5 +24,5 @@ include Faker
 end
 
 50.times do |variable|
-	Checkin.create(event_id: rand(1..50), student_id: rand(1..50), user_id: rand(1..1))
+	Checkin.create(event_id: rand(1..50), student_id: rand(1..50))
 end

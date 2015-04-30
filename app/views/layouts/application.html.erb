@@ -26,7 +26,8 @@
       <% end %>
       <% if admin_signed_in? %>
         <li><a href='/users'><span>Staff</span></a></li>
-        <li><a href='/students/report'><span>Reports</span></a></li>
+        <li><a href=<%= checkins_path  =%>><span>Check-ins</span></a></li>
+        <li><a href=<%= report_students_path =%>><span>Reports</span></a></li>
         <li class="menu-last" ><%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link' %> </li>
         <li class="menu-right" ><a>Logged in as: <%= current_admin.username %></a></li>
       <% elsif user_signed_in? %>
