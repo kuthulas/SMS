@@ -7,7 +7,7 @@ class CardcontrollerController < ApplicationController
     begin
        Card.import(params[:file])
        redirect_to cardcontroller_index_url, notice: "Cards imported."
-    rescue ActiveRecord::UnknownAttributeError 
+    rescue
        redirect_to cardcontroller_index_url, notice: "Error in imported file!"
     end
   end
