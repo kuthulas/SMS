@@ -13,7 +13,9 @@
         <th>Email</th>
         <th>UIN</th>
         <th>Check-in Time</th>
-        <th colspan = 2>Manage</th>
+        <% if admin_signed_in? %>
+          <th colspan = 2>Manage</th>
+        <% end %>
       </tr>
     </thead>
 
