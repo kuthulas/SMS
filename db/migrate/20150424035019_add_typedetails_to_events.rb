@@ -1,5 +1,5 @@
 class AddTypedetailsToEvents < ActiveRecord::Migration
   def change
-    add_column :events, :typedetails, :string
+    add_column :events, :typename, :string
   end
 end

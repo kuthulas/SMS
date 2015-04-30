@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20150424041807) do
     t.string   "uin"
     t.string   "fname"
     t.string   "lname"
-    t.string   "card"
     t.string   "email"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false

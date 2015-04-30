@@ -6,13 +6,12 @@
 <table>
   <thead>
     <tr>
-      <th>Uin</th>
-      <th>Fname</th>
-      <th>Lname</th>
+      <th>UIN</th>
+      <th>First Name</th>
+      <th>Last Name</th>
       <th>Email</th>
-      <th>Dept Event Count</th>
-      <th>Industrial Event Count</th>
-      <th colspan="3"></th>
+      <th>Dept Events Attended</th>
+      <th>Industrial Events Attended</th>
     </tr>
   </thead>
 
@@ -23,8 +22,8 @@
         <td><%= student.fname %></td>
         <td><%= student.lname %></td>
         <td><%= student.email %></td>
-        <td><%= student.depteventnum %></td>
-        <td><%= student.indueventnum %></td>
+        <td><%= student.deptevents %></td>
+        <td><%= student.indevents %></td>
       </tr>
     <% end %>
   </tbody>

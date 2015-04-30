@@ -1,7 +1,6 @@
 class Student < ActiveRecord::Base
 	validates_presence_of :fname, :lname, :email
 	validates_length_of :uin, :is => 9, :allow_blank => true
-	validates_length_of :card, :is => 16, :allow_blank => true
 	validates_format_of :fname, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/
 	validates_format_of :lname, :with => /\A[^0-9`!@#\$%\^&*+_=]+\z/
 	

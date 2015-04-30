@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :name, :eventtype
+  validates_presence_of :name, :type
   has_many :checkins, :dependent => :destroy
   has_many :students, through: :checkins
   has_many :users, through: :checkins
