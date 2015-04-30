@@ -23,14 +23,15 @@ class Event < ActiveRecord::Base
     # configure number of OR conditions for provision
     # of interpolation arguments. Adjust this if you
     # change the number of OR conditions.
-    num_or_conditions = 4
+    num_or_conditions = 5
     where(
       terms.map {
         or_clauses = [
           "LOWER(events.name) LIKE ?",
           "LOWER(events.term) LIKE ?",
           "LOWER(events.location) LIKE ?",
-          "LOWER(events.year) LIKE ?"
+          "LOWER(events.year) LIKE ?",
+          "LOWER(events.typename) LIKE ?"
         ].join(' OR ')
         "(#{ or_clauses })"
       }.join(' AND '),
@@ -73,9 +74,5 @@ class Event < ActiveRecord::Base
       csv << checkin.attributes.values_at(*column_names)
     end
   end
-  end
-
-  def isDeptEvent
-    return eventtype == "Dept"
   end
 end

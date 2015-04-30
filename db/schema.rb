@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20150424041807) do
     t.string   "time"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "eventtype"
-    t.string   "typedetails"
+    t.string   "type"
+    t.string   "typename"
   end
 
   create_table "students", force: :cascade do |t|
@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(version: 20150424041807) do
     t.string   "email"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.integer  "depteventnum", default: 0
-    t.integer  "indueventnum", default: 0
+    t.integer  "deptevents", default: 0
+    t.integer  "indevents", default: 0
   end
 
   create_table "users", force: :cascade do |t|

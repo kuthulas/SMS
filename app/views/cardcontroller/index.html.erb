@@ -12,10 +12,12 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Card</th>
-      <th>UIN</th>  
-    </tr>
+    <% if !@cards.empty? %>
+      <tr>
+        <th>Card</th>
+        <th>UIN</th>  
+      </tr>
+    <% end %>
   </thead>
 
   <tbody>

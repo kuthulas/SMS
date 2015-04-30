@@ -8,8 +8,8 @@
     <%= f.input :date, as: :date_picker, label: false, placeholder: 'Date' %>
     <%= f.input :location, label: false, placeholder: 'Location' %>
     <%= f.input :time, as: :time_picker, label: false, placeholder: 'Time' %>
-    <%= f.input :eventtype,:selected => [ "Dept" ], collection: ["Dept", "Industrial"], label: false %>
-    <%= f.input :typedetails, label: false, placeholder: 'Dept/Industry Name' %>
+    <%= f.input :type,:selected => [ "Department" ], collection: ["Department", "Industrial"], label: false %>
+    <%= f.input :typename, label: false, placeholder: 'Department/Industry Name' %>
   </div>
 
   <div class="form-actions">

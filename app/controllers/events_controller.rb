@@ -8,30 +8,25 @@ class EventsController < ApplicationController
 
   def checkin
     if Card.exists?(:number => params["card"])
-    #if Student.exists?(:card => params["card"])
       @checkstudent = Student.find_by(uin: Card.find_by(number: params["card"]).uin)
-      print "***************", @checkstudent
-      #@checkstudent = Student.where(:card => params["card"]).first
       if(@checkstudent)
         if Checkin.exists?(:event_id => @event.id, :student_id => @checkstudent.id)
           flash.now[:notice] = 'Student already checked in for this event!'
         else
           @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
-	  if(@event.isDeptEvent)
-		@checkstudent.depteventnum += 1
-	  else
-		@checkstudent.indueventnum += 1
-	  end
-	  @checkstudent.save
+      	  if(@event.type == "Department")
+      		  @checkstudent.deptevents += 1
+      	  else
+      		  @checkstudent.indevents += 1
+      	  end
+      	  @checkstudent.save
           @cin.save
         end
       else
-	  flash.now[:notice] = 'Card number found but student not found!'
-	  @render_student = true
-	  @card = params["card"]
+    	  flash.now[:notice] = 'Student data not available! Please contact the administrator!'
       end
     else
-      flash.now[:notice] = 'Card number not found!'
+      flash.now[:notice] = 'Card data not found! Please enter!'
       @render_student = true
       @card = params["card"]
     end
@@ -44,7 +39,6 @@ class EventsController < ApplicationController
 
   def checkback
     if Student.exists?(:uin => params["uin"])
-      
       @cardstu = Card.create(:number => params["card"],:uin => params["uin"])
       @cardstu.save
       
@@ -53,7 +47,11 @@ class EventsController < ApplicationController
         flash.now[:notice] = 'Student record created and checked in!'
       end
     else
-      flash.now[:notice] = 'UIN not found! Check in Failed, Try again or Contact Admin'
+      if(params["uin"].size != 9)
+        flash.now[:notice] = 'UIN must be 9 digits long!'
+      else
+        flash.now[:notice] = 'UIN not found! Please contact the administrator!'
+      end
     end  
 
     @checkins = Checkin.where(event_id: @event.id)
@@ -152,6 +150,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :year, :term, :date, :location, :time, :eventtype, :typedetails)
+      params.require(:event).permit(:name, :year, :term, :date, :location, :time, :type, :typename)
     end
 end
