@@ -84,6 +84,9 @@ class EventsController < ApplicationController
       format.csv { 
         @events = @events.paginate(:page => params[:page], :per_page => @events.count)
         render text: @events.to_csv }
+      format.xls { 
+        @events = @events.paginate(:page => params[:page], :per_page => @events.count)
+        send_data @events.to_csv(col_sep: "\t") }
     end
   end
 
