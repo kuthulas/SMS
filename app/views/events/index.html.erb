@@ -6,18 +6,34 @@
           <%= f.text_field :search_query, :class => 'filterrific-periodically-observed form-control' =%>
         </td>
         <td>
+          <%= f.select :with_term, @filterrific.select_options[:with_term],
+                     { :include_blank => '- Term -' },
+                     { :class => 'form-control' } =%>
+        </td>
+        <td>
+          <%= f.select :with_year, @filterrific.select_options[:with_year],
+                     { :include_blank => '- Year -' },
+                     { :class => 'form-control' } =%>
+        </td>
+        <td>
           <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
                       {}, { :class => 'form-control' } =%>
         </td>
-        <td>
-          <%= link_to "Reset filters", reset_filterrific_url =%>
-        </td>
-        <td>
-          <%= link_to "Download List", "/events.xls", :format => 'csv' %>
-        </td>
+      </tr>
   <% end %>
-  <%= render_filterrific_spinner =%>
-<br>
+  <br>
+  <tr>
+    <td>
+      <%= link_to "Reset filters", reset_filterrific_url =%>
+    </td>
+    <td>
+      <%= render_filterrific_spinner =%>
+    </td>
+    <td>
+      <%= link_to "Download List", "/events.xls", :format => 'csv' %>
+    </td>
+  </tr>
+<br></br>
 <% elsif user_signed_in? %>
 <h2>Today's Events</h2>
 <% end %>

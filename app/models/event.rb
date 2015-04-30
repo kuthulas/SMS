@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
               :available_filters => %w[
                 sorted_by
                 search_query
+                with_term
+                with_year
               ]
 	self.per_page = 10
 
@@ -64,6 +66,22 @@ class Event < ActiveRecord::Base
       ['Term (a-z)', 'term_asc'],
       ['Term (z-a)', 'term_desc']
     ]
+  end
+
+  scope :with_term, lambda { |term|
+    where(:term => [*term])
+  }
+
+  scope :with_year, lambda { |year|
+    where(:year => [*year])
+  }
+
+  def self.options_for_year_select
+    Event.uniq.pluck(:year)
+  end
+
+  def self.options_for_term_select
+    Event.uniq.pluck(:term)
   end
 
   def self.to_csv(options = {})

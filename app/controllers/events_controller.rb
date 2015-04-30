@@ -68,7 +68,9 @@ class EventsController < ApplicationController
         Event,
         params[:filterrific],
         :select_options => {
-          sorted_by: Event.options_for_sorted_by
+          sorted_by: Event.options_for_sorted_by,
+          with_term: Event.options_for_term_select,
+          with_year: Event.options_for_year_select
         }
       ) or return
       @events = @filterrific.find.page(params[:page])
