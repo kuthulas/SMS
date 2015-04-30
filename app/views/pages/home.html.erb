@@ -19,7 +19,7 @@
         <th>Location</th>
         <th>Time</th>
         <% if admin_signed_in? or user_signed_in? %>
-		      <th colspan = 2>Manage</th>
+		      <th colspan = 3 >Manage</th>
         <% end %>
       </tr>
     </thead>
@@ -41,7 +41,8 @@
           <% if admin_signed_in? %>
             <td><%= link_to 'Edit', edit_event_path(event) %></td>
             <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% elsif user_signed_in? %>
+          <% end %>
+          <% if admin_signed_in? or user_signed_in? %>
             <td><%= link_to 'Check-in', check_event_path(event) %></td>
           <% end %>
         </tr>

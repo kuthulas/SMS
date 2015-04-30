@@ -11,5 +11,8 @@ class Ability
     	can :checkin, :all if user.is_a?(User)
         can :checkback, :all if user.is_a?(User)
     	can :manage, [Checkin,Student] if user.is_a?(User)
+        can :checkin, :all if user.is_a?(Admin)
+        can :checkback, :all if user.is_a?(Admin)
+        can :manage, [Checkin,Student] if user.is_a?(Admin)
     end
 end
