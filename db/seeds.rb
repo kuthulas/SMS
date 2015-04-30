@@ -23,6 +23,10 @@ include Faker
 	Student.create(fname:@fname, lname: Name.last_name, uin:Number.number(9).to_s, email:[@fname.downcase, "@tamu.edu"].join(""), card:Code.ean)
 end
 
+5.times do |variable|
+	Event.create(name: Lorem.word, year:'2015', term: @terms.sample , date: I18n.localize(Faker::Date.between(Date.today, Date.today)), location:Address.state_abbr, time:I18n.localize(Faker::Time.between(2.days.ago, Time.now), format: "%I:%M %p"), kind: @event_types.sample, typename: @event_type_details.sample)
+end
+
 50.times do |variable|
-	Checkin.create(event_id: rand(1..50), student_id: rand(1..50))
+	Checkin.create(event_id: rand(1..55), student_id: rand(1..50))
 end
