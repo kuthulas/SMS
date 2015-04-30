@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  validates_presence_of :name, :eventtype
   has_many :checkins, :dependent => :destroy
   has_many :students, through: :checkins
   has_many :users, through: :checkins
@@ -29,7 +30,7 @@ class Event < ActiveRecord::Base
           "LOWER(events.name) LIKE ?",
           "LOWER(events.term) LIKE ?",
           "LOWER(events.location) LIKE ?",
-          "LOWER(events.term) LIKE ?"
+          "LOWER(events.year) LIKE ?"
         ].join(' OR ')
         "(#{ or_clauses })"
       }.join(' AND '),

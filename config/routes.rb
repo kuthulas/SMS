@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, :except => ['new', 'create', 'update']
+  resources :users, :except => ['new', 'create']
 
   #root to: 'students#index'
 

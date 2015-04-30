@@ -2,11 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :uin, label: false, placeholder: 'UIN' %>
-    <%= f.input :fname, label: false, placeholder: 'First Name' %>
-    <%= f.input :lname, label: false, placeholder: 'Last Name' %>
-    <%= f.input :card, label: false, placeholder: 'Card Number' %>
-    <%= f.input :email, label: false, placeholder: 'Email' %>
+    <%= f.input :fname, label: false, placeholder: 'First Name', required: true %>
+    <%= f.input :lname, label: false, placeholder: 'Last Name', required: true %>
+    <%= f.input :email, label: false, placeholder: 'Email', required: true %>
+    <%= f.input :uin, label: false, placeholder: 'UIN', required: false %>
+    <%= f.input :card, label: false, placeholder: 'Card Number', required: false %>
   </div>
 
   <div class="form-actions">

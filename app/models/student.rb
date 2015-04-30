@@ -1,4 +1,5 @@
 class Student < ActiveRecord::Base
+	validates_presence_of :fname, :lname, :email
 	has_many :checkins, :dependent => :destroy
 	has_many :events, through: :checkins
 	has_many :users, through: :checkins

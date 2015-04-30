@@ -72,12 +72,12 @@ label.collection_radio_buttons {
 }
 
 .field_with_errors {
-  background-color: #ff3333;
+  background-color: #800000;
 }
 
 .simple_form .error {
   clear: left;
-  color: black;
+  color: #f2f2f2;
   display: block;
   margin-left: 120px;
 }
