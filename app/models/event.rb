@@ -1,8 +1,7 @@
 class Event < ActiveRecord::Base
-  validates_presence_of :name, :type
+  validates_presence_of :name, :kind
   has_many :checkins, :dependent => :destroy
   has_many :students, through: :checkins
-  has_many :users, through: :checkins
 
 	filterrific :default_filter_params => { :sorted_by => 'date_asc' },
               :available_filters => %w[

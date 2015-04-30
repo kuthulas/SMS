@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20150424041807) do
     t.datetime "updated_at", null: false
     t.integer  "student_id"
     t.integer  "event_id"
-    t.integer  "user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -55,9 +54,9 @@ ActiveRecord::Schema.define(version: 20150424041807) do
     t.date     "date"
     t.string   "location"
     t.string   "time"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "kind"
     t.string   "typename"
   end
 
@@ -65,11 +64,12 @@ ActiveRecord::Schema.define(version: 20150424041807) do
     t.string   "uin"
     t.string   "fname"
     t.string   "lname"
+    t.string   "card"
     t.string   "email"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "deptevents", default: 0
-    t.integer  "indevents", default: 0
+    t.integer  "indevents",  default: 0
   end
 
   create_table "users", force: :cascade do |t|

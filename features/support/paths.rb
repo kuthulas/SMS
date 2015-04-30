@@ -60,7 +60,7 @@ module NavigationHelpers
     when /^Import/
        '/students/import'
     when /^Cards/
-       '/cardcontroller/index'
+       '/cards/index'
     when /^Manage Users/
        '/users'
     when /^New User/
@@ -76,7 +76,7 @@ module NavigationHelpers
     when /^New Checkin/
        '/checkins/new'
     when /^Import/
-       '/cardcontroller/import'
+       '/cards/import'
     when /^Edit/
        '/events/1/edit'
     when /^Destroy/

@@ -1,5 +1,5 @@
 class AddIndueventnumToStudents < ActiveRecord::Migration
   def change
-    add_column :students, :indueventnum, :integer, :default => 0
+    add_column :students, :indevents, :integer, :default => 0
   end
 end

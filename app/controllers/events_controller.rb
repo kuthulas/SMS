@@ -13,8 +13,8 @@ class EventsController < ApplicationController
         if Checkin.exists?(:event_id => @event.id, :student_id => @checkstudent.id)
           flash.now[:notice] = 'Student already checked in for this event!'
         else
-          @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id, :user_id => current_user.id)
-      	  if(@event.type == "Department")
+          @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id)
+      	  if(@event.kind == "Department")
       		  @checkstudent.deptevents += 1
       	  else
       		  @checkstudent.indevents += 1
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
       @cardstu = Card.create(:number => params["card"],:uin => params["uin"])
       @cardstu.save
       
-      @chin = Checkin.create(:event_id => @event.id, :student_id => Student.find_by(uin: @cardstu.uin).id, :user_id => current_user.id)
+      @chin = Checkin.create(:event_id => @event.id, :student_id => Student.find_by(uin: @cardstu.uin).id)
       if @chin.save
         flash.now[:notice] = 'Student record created and checked in!'
       end
@@ -150,6 +150,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :year, :term, :date, :location, :time, :type, :typename)
+      params.require(:event).permit(:name, :year, :term, :date, :location, :time, :kind, :typename)
     end
 end

@@ -1,13 +1,11 @@
-<h2>Import Card Data</h2>
-
-<%= form_tag cardcontroller_import_url, multipart: true do %>
-  <%= file_field_tag :file %> <br></br>
+<%= form_tag cards_import_url, multipart: true do %>
+  <%= file_field_tag :file %>
   <%= submit_tag "Import" %>
 <% end %>
 
 <br>
 <p id="notice"><%= notice %></p>  
-<%= page_entries_info @cards, :model => 'card' =%>
+<h3><%= page_entries_info @cards, :model => 'card' =%></h3>
 <br></br>
 
 <table>

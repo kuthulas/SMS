@@ -1,18 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Reporting Student Checkin data</h3>
+<h3>Student Report</h3>
 <%= page_entries_info @students, :model => 'student' =%>.
 <br></br>
 <table>
   <thead>
-    <tr>
-      <th>UIN</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Dept Events Attended</th>
-      <th>Industrial Events Attended</th>
-    </tr>
+    <% if !@students.empty? %>
+      <tr>
+        <th>UIN</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Department Events</th>
+        <th>Industrial Events</th>
+      </tr>
+    <% end %>
   </thead>
 
   <tbody>

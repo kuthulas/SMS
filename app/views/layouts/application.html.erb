@@ -22,10 +22,10 @@
       <% if admin_signed_in? %>
         <li><a href=<%= events_path =%>><span>Events</span></a></li>
         <li><a href=<%= students_path  =%>><span>Students</span></a></li>
-        <li><a href='/cardcontroller/index'><span>Cards</span></a></li>
+        <li><a href=<%= cards_index_path  =%>><span>Cards</span></a></li>
       <% end %>
       <% if admin_signed_in? %>
-        <li><a href='/users'><span>Manage Users</span></a></li>
+        <li><a href='/users'><span>Staff</span></a></li>
         <li><a href='/students/report'><span>Reports</span></a></li>
         <li class="menu-last" ><%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link' %> </li>
         <li class="menu-right" ><a>Logged in as: <%= current_admin.username %></a></li>

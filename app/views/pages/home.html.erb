@@ -1,7 +1,5 @@
 <% if not admin_signed_in? and not user_signed_in? %>
 	<h3 style="text-align: center">Welcome! Please log in to continue.</h3>
-<% else %>
-	<h3 style="text-align: center">Welcome!</h3>
 <% end %>
 
   <%if !@events.empty? %>
@@ -26,7 +24,11 @@
       </tr>
     </thead>
    <% else %>
-   <h3 style="text-align: center">No Upcoming Events</h3>
+     <% if user_signed_in? %>
+        <h3 style="text-align: center">No Events Today</h3>
+      <% else %>
+        <h3 style="text-align: center">No Upcoming Events</h3>
+      <% end %>
    <% end %>
     <tbody>
       <% @events.each do |event| %>

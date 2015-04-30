@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  get 'cardcontroller/index'
+  get 'cards/index'
 
-  post 'cardcontroller/import'
+  post 'cards/import'
 
   resources :students do
     collection { post :import }
