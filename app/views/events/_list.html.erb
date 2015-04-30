@@ -18,26 +18,18 @@
     <tbody>
       <% @events.each do |event| %>
         <tr>
-          <% if admin_signed_in? %>
           <td><%= event.name %></td>
           <td><%= event.year %></td>
           <td><%= event.term %></td>
           <td><%= l event.date, format: :short %></td>
           <td><%= event.location %></td>
           <td><%= event.time %></td>
+          <% if admin_signed_in? %>
           <td><%= link_to 'Edit', edit_event_path(event) %></td>
           <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
           <% if user_signed_in? %>
-          <% if event.date == Date.today%>
-          <td><%= event.name %></td>
-          <td><%= event.year %></td>
-          <td><%= event.term %></td>
-          <td><%= l event.date, format: :short %></td>
-          <td><%= event.location %></td>
-          <td><%= event.time %></td>
           <td><%= link_to 'Check-in', check_event_path(event) %></td>
-          <% end %>
           <% end %>
         </tr>
       <% end %>

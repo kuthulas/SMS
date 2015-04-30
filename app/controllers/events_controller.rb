@@ -65,14 +65,18 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @filterrific = initialize_filterrific(
-      Event,
-      params[:filterrific],
-      :select_options => {
-        sorted_by: Event.options_for_sorted_by
-      }
-    ) or return
-    @events = @filterrific.find.page(params[:page])
+    if admin_signed_in?
+      @filterrific = initialize_filterrific(
+        Event,
+        params[:filterrific],
+        :select_options => {
+          sorted_by: Event.options_for_sorted_by
+        }
+      ) or return
+      @events = @filterrific.find.page(params[:page])
+    elsif user_signed_in?
+      @events = Event.where(date: Date.today).paginate(:page => params[:page])
+    end
 
     respond_to do |format|
       format.html

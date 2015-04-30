@@ -1,4 +1,5 @@
-<h2>Listing Events</h2>
+<% if admin_signed_in? %>
+  <h2>Listing Events</h2>
   <%= form_for_filterrific @filterrific do |f| =%>
       <tr>
         <td>
@@ -17,6 +18,9 @@
   <% end %>
   <%= render_filterrific_spinner =%>
 <br>
+<% elsif user_signed_in? %>
+<h2>Today's Events</h2>
+<% end %>
 <div id="results">
   <%= render :partial => 'events/list',
            :locals => { :events => @events } =%>
