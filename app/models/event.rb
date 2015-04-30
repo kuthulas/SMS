@@ -22,13 +22,14 @@ class Event < ActiveRecord::Base
     # configure number of OR conditions for provision
     # of interpolation arguments. Adjust this if you
     # change the number of OR conditions.
-    num_or_conditions = 3
+    num_or_conditions = 4
     where(
       terms.map {
         or_clauses = [
           "LOWER(events.name) LIKE ?",
           "LOWER(events.term) LIKE ?",
-          "LOWER(events.location) LIKE ?"
+          "LOWER(events.location) LIKE ?",
+          "LOWER(events.term) LIKE ?"
         ].join(' OR ')
         "(#{ or_clauses })"
       }.join(' AND '),
