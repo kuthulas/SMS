@@ -2,6 +2,7 @@
 
   <p id="notice"><%= notice %></p>
 
+  <% if @events.size > 0 %>
   <table>
     <thead>
       <tr>
@@ -14,7 +15,7 @@
         <th colspan="2">Manage</th>
       </tr>
     </thead>
-
+  <% end %>
     <tbody>
       <% @events.each do |event| %>
         <tr>
