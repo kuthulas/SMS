@@ -16,10 +16,12 @@ class Student < ActiveRecord::Base
                 with_lname
               ]
 	self.per_page = 10
+	
+
 	scope :search_query, lambda { |query|
     return nil  if query.blank?
     # condition query, parse into individual keywords
-    terms = query.downcase.split(/\s+/)
+    terms = query.to_s.downcase.split(/\s+/)
     # replace "*" with "%" for wildcard searches,
     # append '%', remove duplicate '%'s
     terms = terms.map { |e|
@@ -42,6 +44,8 @@ class Student < ActiveRecord::Base
       *terms.map { |e| [e] * num_or_conditions }.flatten
     )
   }
+    
+
     scope :sorted_by, lambda { |sort_option|
     # extract the sort direction from the param value.
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
@@ -94,7 +98,7 @@ class Student < ActiveRecord::Base
     Student.uniq.pluck(:lname)
   end
 
-	attr_accessor :tag_list
+
 
 	def self.import(file)
   	  	CSV.foreach(file.path, headers: true) do |row|

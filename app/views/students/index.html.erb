@@ -5,21 +5,6 @@
           <%= f.text_field :search_query, :class => 'filterrific-periodically-observed form-control' =%>
         </td>
         <td>
-          <%= f.select :with_uin, @filterrific.select_options[:with_uin],
-                     { :include_blank => '- UIN -' },
-                     { :class => 'form-control' } =%>
-        </td>
-        <td>
-          <%= f.select :with_fname, @filterrific.select_options[:with_fname],
-                     { :include_blank => '- First Name -' },
-                     { :class => 'form-control' } =%>
-        </td>
-        <td>
-          <%= f.select :with_lname, @filterrific.select_options[:with_lname],
-                     { :include_blank => '- Last Name -' },
-                     { :class => 'form-control' } =%>
-        </td>
-        <td>
           <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
                       {}, { :class => 'form-control' } =%>
         </td>
