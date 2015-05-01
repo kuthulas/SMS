@@ -4,7 +4,21 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all.paginate(:page => params[:page])
+    if admin_signed_in?
+      @filterrific = initialize_filterrific(
+        Student,
+        params[:filterrific],
+        :select_options => {
+          sorted_by: Student.options_for_sorted_by,
+          with_uin: Student.options_for_uin_select,
+          with_fname: Student.options_for_fname_select,
+          with_lname: Student.options_for_lname_select
+        }
+      ) or return
+       @students = Student.all.paginate(:page => params[:page])
+    end
+
+   
   end
 
   # GET /students/1

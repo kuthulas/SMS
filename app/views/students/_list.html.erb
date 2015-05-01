@@ -1,0 +1,30 @@
+  <%= page_entries_info @students, :model => 'students' =%>
+
+  <p id="notice"><%= notice %></p>
+
+  <%if !@students.empty? %>
+  <table>
+    <thead>
+      <tr>
+        <th>UIN</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  <% end %>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.uin %></td>
+          <td><%= student.fname %></td>
+          <td><%= student.lname %></td>
+          <td><%= student.email %></td>
+          <td><%= link_to 'Show', student %></td>
+          <td><%= link_to 'Edit', edit_student_path(student) %></td>
+          <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
