@@ -1,6 +1,6 @@
 <%= form_tag cards_import_url, multipart: true do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
+  <%= submit_tag("Import", :class => "sub_button" ) %>
 <% end %>
 
 <br>

@@ -21,6 +21,9 @@ class CheckinsController < ApplicationController
       format.csv { 
         @checkins = @checkins.paginate(:page => params[:page], :per_page => @checkins.count)
         render text: @checkins.to_csv }
+      format.xls { 
+        @checkins = @checkins.paginate(:page => params[:page], :per_page => @checkins.count)
+        send_data @checkins.to_csv(col_sep: "\t") }
     end
   end
 
@@ -86,6 +89,6 @@ class CheckinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def checkin_params
-      params[:checkin]
+      params.require(:checkin).permit(:event_id, :student_id)
     end
 end
