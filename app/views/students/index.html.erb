@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<h3>Listing Students</h3>
+<%= page_entries_info @students, :model => 'student' =%>. <%= link_to 'New Student', new_student_path %>
+<br></br>
+<%= form_for_filterrific @filterrific do |f| =%>
+      <tr>
+        <td>
+          <%= f.text_field :search_query, :class => 'filterrific-periodically-observed form-control' =%>
+        </td>
+        <td>
+          <%= f.select :with_uin, @filterrific.select_options[:with_uin],
+                     { :include_blank => '- UIN -' },
+                     { :class => 'form-control' } =%>
+        </td>
+        <td>
+          <%= f.select :with_fname, @filterrific.select_options[:with_fname],
+                     { :include_blank => '- First Name -' },
+                     { :class => 'form-control' } =%>
+        </td>
+        <td>
+          <%= f.select :with_lname, @filterrific.select_options[:with_lname],
+                     { :include_blank => '- Last Name -' },
+                     { :class => 'form-control' } =%>
+        </td>
+        <td>
+          <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
+                      {}, { :class => 'form-control' } =%>
+        </td>
+      </tr>
+  <% end %>
+  <br>
+  <tr>
+    <td>
+      <%= link_to "Reset filters", reset_filterrific_url =%>
+    </td>
+    <td>
+      <%= render_filterrific_spinner =%>
+    </td>
+  </tr>
+<br></br>
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %><br>
+  <%= submit_tag "Import" %>
+<% end %>
+<br></br>
+<div id="results">
+  <%= render :partial => 'students/list',
+           :locals => { :students => @students } =%>
+</div>
+<br>
+<p><%= will_paginate @students =%></p>
+<br>
