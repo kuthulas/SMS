@@ -15,10 +15,12 @@ class StudentsController < ApplicationController
           with_lname: Student.options_for_lname_select
         }
       ) or return
-       @students = Student.all.paginate(:page => params[:page])
+       @students = @filterrific.find.page(params[:page])
     end
-
-   
+    respond_to do |format|
+      format.html
+      format.js
+    end 
   end
 
   # GET /students/1
