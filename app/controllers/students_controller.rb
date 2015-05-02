@@ -63,7 +63,23 @@ class StudentsController < ApplicationController
   end
 
   def report
-    @students = Student.all.paginate(:page => params[:page])
+    if admin_signed_in?
+      @filterrific = initialize_filterrific(
+        Student,
+        params[:filterrific],
+        :select_options => {
+          sorted_by: Student.options_for_sorted_by,
+          with_uin: Student.options_for_uin_select,
+          with_fname: Student.options_for_fname_select,
+          with_lname: Student.options_for_lname_select
+        }
+      ) or return
+       @students = @filterrific.find.page(params[:page])
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end 
   end
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
