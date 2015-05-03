@@ -14,12 +14,9 @@ require 'faker'
 include Faker
 
 @terms = ["Spring", "Fall", "Summer", "Winter"]
-<<<<<<< HEAD
-@event_types = ["Department", "Industrial"]
-=======
 @years = ["2013", "2014", "2015"]
 @event_types = ["Dept", "Industrial"]
->>>>>>> branch_dj
+
 @event_type_details = ["Chemical","CSE", "Petroleum", "Oil and Energy", "Defense"]
 
 50.times do |variable|
