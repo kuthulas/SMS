@@ -11,6 +11,9 @@
         <th>Email</th>
         <th>Department Events</th>
         <th>Industrial Events</th>
+        <th>Term</th>
+        <th>Year</th>
+        <th colspan="1"></th>
       </tr>
     <% end %>
   </thead>
@@ -24,6 +27,9 @@
         <td><%= student.email %></td>
         <td><%= student.deptevents %></td>
         <td><%= student.indevents %></td>
+        <td><%= student.term %></td>
+        <td><%= student.year %></td>
+        <td><%= link_to 'Details', details_student_path(student) %></td>
       </tr>
     <% end %>
   </tbody>

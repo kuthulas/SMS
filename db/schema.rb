@@ -67,12 +67,12 @@ ActiveRecord::Schema.define(version: 20150502162746) do
     t.string   "lname"
     t.string   "card"
     t.string   "email"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "depteventnum", default: 0
-    t.integer  "indueventnum", default: 0
-    t.string   "term",         default: ""
-    t.string   "year",         default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "deptevents", default: 0
+    t.integer  "indevents",  default: 0
+    t.string   "term",       default: ""
+    t.string   "year",       default: ""
   end
 
   create_table "users", force: :cascade do |t|

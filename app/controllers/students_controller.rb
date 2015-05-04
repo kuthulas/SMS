@@ -12,7 +12,9 @@ class StudentsController < ApplicationController
           sorted_by: Student.options_for_sorted_by,
           with_uin: Student.options_for_uin_select,
           with_fname: Student.options_for_fname_select,
-          with_lname: Student.options_for_lname_select
+          with_lname: Student.options_for_lname_select,
+          with_term: Student.options_for_term_select,
+          with_year: Student.options_for_year_select
         }
       ) or return
        @students = @filterrific.find.page(params[:page])
@@ -21,6 +23,10 @@ class StudentsController < ApplicationController
       format.html
       format.js
     end 
+  end
+
+  # GET /students/1/details
+  def details
   end
 
   # GET /students/1
@@ -36,6 +42,8 @@ class StudentsController < ApplicationController
   # GET /students/1/edit
   def edit
   end
+
+  
 
   # POST /students
   # POST /students.json
@@ -71,7 +79,9 @@ class StudentsController < ApplicationController
           sorted_by: Student.options_for_sorted_by,
           with_uin: Student.options_for_uin_select,
           with_fname: Student.options_for_fname_select,
-          with_lname: Student.options_for_lname_select
+          with_lname: Student.options_for_lname_select,
+          with_term: Student.options_for_term_select,
+          with_year: Student.options_for_year_select
         }
       ) or return
        @students = @filterrific.find.page(params[:page])
@@ -113,6 +123,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:uin, :fname, :lname, :email)
+      params.require(:student).permit(:uin, :fname, :lname, :email, :term, :year)
     end
 end
