@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, :except => ['new', 'create']
-
+  
   #root to: 'students#index'
 
   get 'pages/home'
