@@ -14,13 +14,18 @@ require 'faker'
 include Faker
 
 @terms = ["Spring", "Fall", "Summer", "Winter"]
-@event_types = ["Department", "Industrial"]
+@years = ["2013", "2014", "2015"]
+@event_types = ["Dept", "Industrial"]
+
 @event_type_details = ["Chemical","CSE", "Petroleum", "Oil and Energy", "Defense"]
 
 50.times do |variable|
 	Event.create(name: Lorem.word, year:'2015', term: @terms.sample , date: I18n.localize(Faker::Date.between(2.days.ago, 150.days.since)), location:Address.state_abbr, time:I18n.localize(Faker::Time.between(2.days.ago, Time.now), format: "%I:%M %p"), kind: @event_types.sample, typename: @event_type_details.sample)
 	@fname = Name.first_name
-	Student.create(fname:@fname, lname: Name.last_name, uin:Number.number(9).to_s, email:[@fname.downcase, "@tamu.edu"].join(""), card:Code.ean)
+	@uin = Number.number(9).to_s
+	@card_num = Number.number(9).to_s
+	Card.create(number: @card_num, uin: @uin)
+	Student.create(fname:@fname, lname: Name.last_name, uin:@uin, email:[@fname.downcase, "@tamu.edu"].join(""), card:Code.ean, term: @terms.sample, year: @years.sample)
 end
 
 5.times do |variable|

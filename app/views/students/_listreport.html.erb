@@ -1,0 +1,39 @@
+<%= page_entries_info @students, :model => 'student' =%>
+
+<br></br>
+<table>
+  <thead>
+    <% if !@students.empty? %>
+      <tr>
+        <th>UIN</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Department Events</th>
+        <th>Industrial Events</th>
+        <th>Term</th>
+        <th>Year</th>
+        <th>Details</th>
+      </tr>
+    <% end %>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.uin %></td>
+        <td><%= student.fname %></td>
+        <td><%= student.lname %></td>
+        <td><%= student.email %></td>
+        <td><%= student.deptevents %></td>
+        <td><%= student.indevents %></td>
+        <td><%= student.term %></td>
+        <td><%= student.year %></td>
+        <td><%= link_to 'Details', details_student_path(student) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+

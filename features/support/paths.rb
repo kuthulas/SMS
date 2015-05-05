@@ -83,6 +83,8 @@ module NavigationHelpers
        'events/1'
     when /^Show/
        'students/1'
+    when /^Details/
+       'students/1/details'   
     
     
   # Add more mappings here.

@@ -1,0 +1,23 @@
+<h3><%= page_entries_info @cards, :model => 'cards' =%></h3>
+
+<p id="notice"><%= notice %></p>
+
+<table style="margin-left: auto;margin-right: auto;">
+  <thead>
+    <% if !@cards.empty? %>
+      <tr>
+        <th>Card</th>
+        <th>UIN</th>  
+      </tr>
+    <% end %>
+  </thead>
+
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= card.number %></td>
+        <td><%= card.uin %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

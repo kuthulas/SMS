@@ -1,34 +1,33 @@
-<%= form_tag cards_import_url, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag("Import", :class => "sub_button" ) %>
-<% end %>
-
-<br>
-<p id="notice"><%= notice %></p>  
-<h3><%= page_entries_info @cards, :model => 'card' =%></h3>
+<h3>Listing Cards</h3>
+<%= form_for_filterrific @filterrific do |f| =%>
+      <tr>
+        <td>
+          <%= f.text_field :search_query, :class => 'filterrific-periodically-observed form-control' =%>
+        </td>
+        <td>
+          <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
+                      {}, { :class => 'form-control' } =%>
+        </td>
+      </tr>
+  <% end %>
+  <br>
+  <tr>
+    <td>
+      <%= link_to "Reset filters", reset_filterrific_url =%>
+    </td>
+    <td>
+      <%= render_filterrific_spinner =%>
+    </td>
+  </tr>
 <br></br>
-
-<table>
-  <thead>
-    <% if !@cards.empty? %>
-      <tr>
-        <th>Card</th>
-        <th>UIN</th>  
-      </tr>
-    <% end %>
-  </thead>
-
-  <tbody>
-    <% @cards.each do |card| %>
-      <tr>
-        <td><%= card.number %></td>
-        <td><%= card.uin %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<p><%= will_paginate @cards =%></p>
-<br>
-
+  <%= form_tag cards_import_url, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag("Import", :class => "sub_button" ) %>
+  <% end %>
+<div id="results">
+  <%= render :partial => 'cards/list',
+           :locals => { :cards => @cards } =%>
+</div>
+  <br>
+  <p><%= will_paginate @cards =%></p>
+  <br>

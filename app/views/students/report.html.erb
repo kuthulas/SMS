@@ -1,35 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <h3>Student Report</h3>
-<%= page_entries_info @students, :model => 'student' =%>.
+<%= form_for_filterrific @filterrific do |f| =%>
+      <tr>
+        <td>
+          <%= f.text_field :search_query, :class => 'filterrific-periodically-observed form-control' =%>
+        </td>
+        <td>
+          <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
+                      {}, { :class => 'form-control' } =%>
+        </td>
+      </tr>
+  <% end %>
+  <br>
+  <tr>
+    <td>
+      <%= link_to "Reset filters", reset_filterrific_url =%>
+    </td>
+    <td>
+      <%= render_filterrific_spinner =%>
+    </td>
+  </tr>
 <br></br>
-<table>
-  <thead>
-    <% if !@students.empty? %>
-      <tr>
-        <th>UIN</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Department Events</th>
-        <th>Industrial Events</th>
-      </tr>
-    <% end %>
-  </thead>
-
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.uin %></td>
-        <td><%= student.fname %></td>
-        <td><%= student.lname %></td>
-        <td><%= student.email %></td>
-        <td><%= student.deptevents %></td>
-        <td><%= student.indevents %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<p><%= will_paginate @students =%></p>
-<br>
+<br></br>
+<div id="results">
+  <%= render :partial => 'students/listreport',
+           :locals => { :students => @students } =%>
+</div>
+  <br>
+  <p><%= will_paginate @students =%></p>
+  <br>
