@@ -15,7 +15,7 @@ include Faker
 
 @terms = ["Spring", "Fall", "Summer", "Winter"]
 @years = ["2013", "2014", "2015"]
-@event_types = ["Dept", "Industrial"]
+@event_types = ["Department", "Industrial"]
 
 @event_type_details = ["Chemical","CSE", "Petroleum", "Oil and Energy", "Defense"]
 
