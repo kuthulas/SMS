@@ -27,6 +27,8 @@ class StudentsController < ApplicationController
 
   # GET /students/1/details
   def details
+    @checkins = Checkin.where(student_id: @student.id).order(:created_at).reverse_order.paginate(:page => params[:page])
+    @student = Student.find(@student.id)
   end
 
   # GET /students/1
