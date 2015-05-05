@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :students do
     collection { post :import }
     collection { get :report }
+    member {get :details}
   end
   resources :students
 
