@@ -41,9 +41,15 @@ class EventsController < ApplicationController
     if Student.exists?(:uin => params["uin"])
       @cardstu = Card.create(:number => params["card"],:uin => params["uin"])
       @cardstu.save
-      
+      @checkstudent = Student.find_by(uin: params["uin"])
       @chin = Checkin.create(:event_id => @event.id, :student_id => Student.find_by(uin: @cardstu.uin).id)
-      if @chin.save
+      if(@event.kind == "Department")
+        @checkstudent.deptevents += 1
+      else
+        @checkstudent.indevents += 1
+      end
+
+      if @chin.save and @checkstudent.save
         flash.now[:notice] = 'Student record created and checked in!'
       end
     else
