@@ -15,18 +15,18 @@
           <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
                       {}, { :class => 'form-control' } =%>
         </td>
+        <td>
+          <%= link_to "Reset filters", reset_filterrific_url =%>
+        </td>
+        <td>
+          <%= link_to 'New Student', new_student_path %>
+        </td>
+        <td>
+          <%= render_filterrific_spinner =%>
+        </td>
       </tr>
   <% end %>
-  <br>
-  <tr>
-    <td>
-      <%= link_to "Reset filters", reset_filterrific_url =%>
-    </td>
-    <td>
-      <%= render_filterrific_spinner =%>
-    </td>
-  </tr>
-<br></br>
+<br>
 <div id="results">
   <%= render :partial => 'students/list',
            :locals => { :students => @students } =%>

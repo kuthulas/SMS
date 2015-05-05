@@ -10,18 +10,15 @@
           <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
                       {}, { :class => 'form-control' } =%>
         </td>
+        <td>
+          <%= link_to "Reset filters", reset_filterrific_url =%> <%= render_filterrific_spinner =%>
+        </td>
+        <td>
+          <%= link_to "Download", "/students/report.xls", :format => 'xls' %>
+        </td>
       </tr>
   <% end %>
-  <br>
-  <tr>
-    <td>
-      <%= link_to "Reset filters", reset_filterrific_url =%> <%= render_filterrific_spinner =%>
-    </td>
-    <td>
-      <%= link_to "Download", "/students/report.xls", :format => 'xls' %>
-    </td>
-  </tr>
-<br></br>
+<br>
 <div id="results">
   <%= render :partial => 'students/listreport',
            :locals => { :students => @students } =%>
