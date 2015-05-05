@@ -131,4 +131,13 @@ class Student < ActiveRecord::Base
       		Student.create! row.to_hash
     	end
 	end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+    csv << column_names
+    all.each do |checkin|
+      csv << checkin.attributes.values_at(*column_names)
+    end
+  end
+  end
 end

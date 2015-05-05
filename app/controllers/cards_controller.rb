@@ -16,6 +16,15 @@ class CardsController < ApplicationController
     end 
   end
 
+   def destroy
+    @card = Card.find(params[:id])
+    @card.destroy
+    respond_to do |format|
+      format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   def import
     begin
        Card.import(params[:file])

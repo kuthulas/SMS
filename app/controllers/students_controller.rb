@@ -91,6 +91,12 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      format.csv { 
+        @students = @students.paginate(:page => params[:page], :per_page => @students.count)
+        render text: @students.to_csv }
+      format.xls { 
+        @students = @students.paginate(:page => params[:page], :per_page => @students.count)
+        send_data @students.to_csv(col_sep: "\t") }
     end 
   end
   # PATCH/PUT /students/1

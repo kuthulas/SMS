@@ -7,7 +7,8 @@
     <% if !@cards.empty? %>
       <tr>
         <th>Card</th>
-        <th>UIN</th>  
+        <th>UIN</th> 
+        <th>Manage</th>
       </tr>
     <% end %>
   </thead>
@@ -17,6 +18,9 @@
       <tr>
         <td><%= card.number %></td>
         <td><%= card.uin %></td>
+        <% if admin_signed_in? %>
+          <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

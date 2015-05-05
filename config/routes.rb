@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   
   get 'cards/index'
-
   post 'cards/import'
+
+  resources :cards do
+    member {get :destroy}
+  end
 
   resources :students do
     collection { post :import }
     collection { get :report }
     member {get :details}
-    member {get :report}
   end
   resources :students
 
