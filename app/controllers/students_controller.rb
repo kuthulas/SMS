@@ -27,6 +27,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1/details
   def details
+  
   end
 
   # GET /students/1
