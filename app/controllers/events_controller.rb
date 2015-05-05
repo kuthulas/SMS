@@ -14,7 +14,6 @@ class EventsController < ApplicationController
           flash.now[:notice] = 'Student already checked in for this event!'
         else
           @cin = Checkin.create(:event_id => @event.id, :student_id => @checkstudent.id)
-          print '-------------------------------kumaran----', @event.kind
       	  if(@event.kind == "Department")
       		  @checkstudent.deptevents += 1
       	  else
