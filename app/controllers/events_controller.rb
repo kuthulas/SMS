@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def check
-     @checkins = Checkin.where(event_id: @event.id)
+     @checkins = Checkin.where(event_id: @event.id).order(:created_at).reverse_order
   end
 
   def checkin
@@ -31,7 +31,7 @@ class EventsController < ApplicationController
       @card = params["card"]
     end
 
-    @checkins = Checkin.where(event_id: @event.id)
+    @checkins = Checkin.where(event_id: @event.id).order(:created_at).reverse_order
     respond_to do |format|
       format.js
     end
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
       end
     end  
 
-    @checkins = Checkin.where(event_id: @event.id)
+    @checkins = Checkin.where(event_id: @event.id).order(:created_at).reverse_order
     respond_to do |format|
         format.js
     end
