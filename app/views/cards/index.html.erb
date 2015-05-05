@@ -1,3 +1,8 @@
+ <%= form_tag cards_import_url, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag("Import", :class => "sub_button" ) %>
+  <% end %>
+
 <h3>Listing Cards</h3>
 <%= form_for_filterrific @filterrific do |f| =%>
       <tr>
@@ -19,11 +24,6 @@
       <%= render_filterrific_spinner =%>
     </td>
   </tr>
-<br></br>
-  <%= form_tag cards_import_url, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag("Import", :class => "sub_button" ) %>
-  <% end %>
 <div id="results">
   <%= render :partial => 'cards/list',
            :locals => { :cards => @cards } =%>
