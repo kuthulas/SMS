@@ -67,7 +67,7 @@ class StudentsController < ApplicationController
     begin
        Student.import(params[:file])
        redirect_to students_url, notice: "Students imported."
-    rescue ActiveRecord::UnknownAttributeError 
+    rescue
        redirect_to students_url, notice: "Error in imported file!"
     end
   end
